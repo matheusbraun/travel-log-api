@@ -12,7 +12,7 @@ const routes = require('./routes');
 const app = express();
 
 mongoose.connect(
-  `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0-cip9r.mongodb.net/test?retryWrites=true&w=majority`,
+  `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0-cip9r.mongodb.net/travel-log?retryWrites=true&w=majority`,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
