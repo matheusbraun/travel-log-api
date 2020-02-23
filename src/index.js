@@ -7,14 +7,19 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 
 const { notFound, errorHandler } = require('./middlewares');
+const routes = require('./routes');
 
 const app = express();
 
-mongoose.connect(process.env.DATABASE_URL, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(
+  `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0-cip9r.mongodb.net/test?retryWrites=true&w=majority`,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  },
+);
 
+app.use(express.json());
 app.use(morgan('common'));
 app.use(helmet());
 app.use(
@@ -23,11 +28,7 @@ app.use(
   }),
 );
 
-app.get('/', (req, res) => {
-  res.json({
-    message: 'Hello World',
-  });
-});
+app.use(routes);
 
 app.use(notFound);
 app.use(errorHandler);
