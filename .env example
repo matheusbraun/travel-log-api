@@ -1,0 +1,5 @@
+NODE_ENV=environment you are on
+PORT=port you are hosting your app
+DB_USER=your db user
+DB_PASSWORD=your db passoword
+CORS_ORIGIN=your frontend link here
