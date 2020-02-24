@@ -1,10 +1,10 @@
+require('dotenv/config');
+
 const express = require('express');
 const morgan = require('morgan');
 const helmet = require('helmet');
 const cors = require('cors');
 const mongoose = require('mongoose');
-
-require('dotenv').config();
 
 const { notFound, errorHandler } = require('./middlewares');
 const routes = require('./routes');
@@ -12,7 +12,7 @@ const routes = require('./routes');
 const app = express();
 
 mongoose.connect(
-  `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0-cip9r.mongodb.net/travel-log?retryWrites=true&w=majority`,
+  `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0-cip9r.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
